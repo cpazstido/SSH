@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.cf.bean.Person">
+        <id name="pid" type="java.lang.Integer">
+            <generator class="identity"></generator>
+        </id>
+        <property name="name" length="20" type="java.lang.String"></property>
+        <property name="age" type="java.lang.Integer"></property>
+
+        <many-to-one name="cla" column="cid" class="com.cf.bean.Class"></many-to-one>
+    </class>
+</hibernate-mapping>

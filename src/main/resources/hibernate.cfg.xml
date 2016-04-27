@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <!-- sessionFactory代表一个数据库的描述 -->
+    <session-factory>
+        <!-- 数据库用户名、密码、驱动、URL、数据库方言 -->
+        <property name="connection.password">123456</property>
+        <property name="connection.username">root</property>
+        <property name="hibernate.connection.driver_class">
+            com.mysql.jdbc.Driver
+        </property>
+        <property name="hibernate.connection.url">
+            jdbc:mysql://localhost:3306/sshTest
+        </property>
+        <!-- 告诉hibernate链接的是什么数据库 -->
+        <property name="dialect">
+            org.hibernate.dialect.MySQLDialect
+        </property>
+        <!-- 显示sql语句 -->
+        <property name="show_sql">true</property>
+        <!-- validate 默认值 根据持久化类和映射文件检查表的结构
+             update hibernate容器在启动的时候，会根据持久化类和映射文件检查表的结构
+            如果不存在，则创建，如果存在，则更新
+            create 每次启动hibernate容器，不管表是否存在，都会创建
+            create-drop 当启动hibernate容器时创建表，当hibernate容器销毁时，删除表 -->
+        <property name="hbm2ddl.auto">update</property>
+        <property name="format_sql">false</property>
+        <!-- 持久化类和数据库表的映射文件 -->
+        <mapping resource="hbm/Person.hbm.xml" />
+        <mapping resource="hbm/Class.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>

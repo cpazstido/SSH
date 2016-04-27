@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.cf.bean.Class">
+        <id name="cid" type="java.lang.Integer">
+            <generator class="identity"></generator>
+        </id>
+        <property name="cname" length="20" type="java.lang.String"></property>
+
+        <set name="personSet"  inverse="true" lazy="false"  cascade="all" >
+            <key column="cid"></key>
+            <one-to-many class="com.cf.bean.Person"/>
+        </set>
+    </class>
+</hibernate-mapping>
