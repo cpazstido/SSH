@@ -50,4 +50,16 @@ public class Test1 {
         session.close();
         factory.close();
     }
+
+    @Test
+    public void testHibernateSpring() {
+        //加载Spring的配置文件，得到ApplicationContext对象
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        //获取bean对象
+        SessionFactory factory = (SessionFactory) context.getBean("sessionFactory");
+        Session session=factory.openSession();
+        Class c=(Class)session.get(Class.class,1);
+        System.out.println(c.getCname());
+        session.close();
+    }
 }
