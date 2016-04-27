@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <!--        <constant name="struts.convention.action.suffix" value="Controller"/>-->
+    <!--		<constant name="struts.convention.action.mapAllMatches" value="true"/>-->
+    <!--		<constant name="struts.convention.default.parent.package" value="rest-default"/>-->
+    <!--		<constant name="struts.convention.package.locators" value="rest"/>-->
+    <!--		<constant name="struts.mapper.class" value="org.apache.struts2.dispatcher.mapper.PrefixBasedActionMapper" />-->
+    <!--		<constant name="struts.mapper.prefixMapping" value="/rest:rest,:struts" />-->
+    <!-- 设置编码格式 -->
+    <constant name="struts.locale" value="zh_CN"></constant>
+    <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+
+    <constant name="struts.action.extension" value="do,action,,json" />
+    <constant name="struts.serve.static.browserCache" value="false" />
+    <!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+    <constant name="struts.configuration.xml.reload" value="true" />
+    <!-- 开发模式下使用,这样可以打印出更详细的错误信息 -->
+    <constant name="struts.devMode" value="false" />
+    <!--        	    修改struts上传文件时文件的大小限制-->
+    <constant name="struts.multipart.maxSize" value="1000000000"></constant>
+
+    <package name="mydefault" abstract="true" extends="json-default,struts-default">
+        <interceptors>
+            <!--&lt;!&ndash; 定义自定义的拦截器类 &ndash;&gt;-->
+            <!--<interceptor name="loginInterceptor"  class="com.hytx.interceptor.LoginInterceptor" />-->
+            <!--<interceptor name="loginInterceptorForAndroid"  class="com.hytx.interceptor.LoginInterceptorForAndroid" />-->
+            <!--<interceptor name="loginInterceptorForDk"  class="com.hytx.interceptor.LoginInterceptorForDk" />-->
+            <!--&lt;!&ndash; 自定义拦截器的组 &ndash;&gt;-->
+            <!--<interceptor-stack name="myStack">-->
+                <!--&lt;!&ndash;<interceptor-ref name="loginInterceptor" />&ndash;&gt;-->
+                <!--<interceptor-ref name="paramsPrepareParamsStack" />-->
+            <!--</interceptor-stack>-->
+            <!--<interceptor-stack name="androidStack">-->
+                <!--<interceptor-ref name="loginInterceptorForAndroid"></interceptor-ref>-->
+                <!--<interceptor-ref name="paramsPrepareParamsStack" />-->
+            <!--</interceptor-stack>-->
+            <!--<interceptor-stack name="dkStack">-->
+                <!--<interceptor-ref name="loginInterceptorForDk"></interceptor-ref>-->
+                <!--<interceptor-ref name="paramsPrepareParamsStack" />-->
+            <!--</interceptor-stack>-->
+
+            <interceptor-stack name="mydefaultStack">
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <!--<default-interceptor-ref name="myStack" />-->
+
+        <!--<global-results>-->
+            <!--<result name="auth">/WEB-INF/pages/error.jsp</result>-->
+            <!--&lt;!&ndash;<result name="login">/WEB-INF/pages/login.jsp</result>&ndash;&gt;-->
+            <!--&lt;!&ndash;<result name="androidLogin" type="json">&ndash;&gt;-->
+                <!--&lt;!&ndash;<param name="root">"loginFail"</param>&ndash;&gt;-->
+            <!--&lt;!&ndash;</result>&ndash;&gt;-->
+            <!--&lt;!&ndash;<result name="dkLogin" type="json">&ndash;&gt;-->
+                <!--&lt;!&ndash;<param name="root">"loginFail"</param>&ndash;&gt;-->
+            <!--&lt;!&ndash;</result>&ndash;&gt;-->
+        <!--</global-results>-->
+
+    </package>
+
+    <include file="struts/struts-person.xml" />
+
+</struts>

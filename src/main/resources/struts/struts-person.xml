@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <package name="person" namespace="/" extends="json-default,mydefault">
+        <!--<default-interceptor-ref name="myStack" />-->
+
+        <action name="companyAdd" class="companyAction" method="add">
+            <result>/WEB-INF/pages/index.jsp</result>
+        </action>
+
+        <action name="personJson" class="companyAction" method="personJson">
+            <result name="success"  type="json">
+                <param name="root">msg</param>
+            </result>
+        </action>
+
+    </package>
+</struts>
+
